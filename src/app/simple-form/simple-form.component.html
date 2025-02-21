@@ -1,0 +1,22 @@
+<div>
+  <input type="text" [(ngModel)]="text1" (ngModelChange)="updateText1($event)" #text1="ngModel" required pattern="^\d+$" min="1" max="100" placeholder="数値1を入力">
+  +
+  <input type="text" [(ngModel)]="text2" (ngModelChange)="updateText2($event)" #text2="ngModel" required pattern="^\d+$" placeholder="数値2を入力">
+  <button (click)="addAndShow()" class="calc-button" [disabled]="text1.invalid || text2.invalid">計算！</button>
+</div>
+
+<!-- text1 のバリデーションメッセージ -->
+<p *ngIf="text1.invalid && text1.touched" class="error">
+  <span *ngIf="text1.errors?.['required']">数値1は必須です。</span>
+  <span *ngIf="text1.errors?.['pattern']">数値1には数値のみ入力してください。</span>
+  <span *ngIf="text1.errors?.['minValue']">数値1には1以上を入力してください。</span>
+  <span *ngIf="text1.errors?.['maxValue']">数値1には100以下を入力してください。</span>
+</p>
+
+<!-- text2 のバリデーションメッセージ -->
+<p *ngIf="text2.invalid && text2.touched" class="error">
+  <span *ngIf="text2.errors?.['required']">数値2は必須です。</span>
+  <span *ngIf="text2.errors?.['pattern']">数値2には数値のみ入力してください。</span>
+</p>
+
+<p>{{ result }}</p>

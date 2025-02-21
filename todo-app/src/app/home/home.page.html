@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>日記アプリ</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- 日記入力フォーム -->
+  <ion-item>
+    <ion-input [(ngModel)]="newDiary.title" placeholder="タイトル"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-textarea [(ngModel)]="newDiary.content" placeholder="本文を入力"></ion-textarea>
+  </ion-item>
+  <ion-button expand="full" (click)="addDiary()">保存</ion-button>
+
+  <!-- 日記リスト -->
+  <ion-list>
+    <div *ngFor="let month of getMonths()">
+      <h2>{{ month }}</h2>
+      <ion-item *ngFor="let diary of groupedDiaries[month]; let i = index">
+        <ion-label>
+          <h2>{{ diary.date }}</h2>
+          <h3>{{ diary.title }}</h3>
+          <p>{{ diary.content }}</p>
+        </ion-label>
+        <ion-button color="danger" (click)="deleteDiary(i)">削除</ion-button>
+      </ion-item>
+    </div>
+  </ion-list>
+</ion-content>
