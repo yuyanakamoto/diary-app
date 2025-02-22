@@ -1,0 +1,8 @@
+.input-box {
+    margin-right: 0.5rem; /* 1文字分の空白 */
+  }
+  
+  .calc-btn {
+    margin-left: 0.5rem; /* ボタンの前にも 1文字分の空白 */
+  }
+  
